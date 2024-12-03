@@ -11,7 +11,7 @@ const responsive = {
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
-    items: 2,
+    items: 4,
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
@@ -40,9 +40,9 @@ const PopularMovieSlide = () => {
       <Carousel
         responsive={responsive}
         infinite={true}
-        containerClass="carousel-container"
-        itemClass="carousel-item-padding-40-px"
-        centerMode={true}
+        containerClass="carousel-container h-[28rem] border border-red-600"
+        itemClass="movie-slider p-1"
+        centerMode={false}
       >
         {data.results.map((movie, index) => (
           <MovieCard movie={movie} key={index} />

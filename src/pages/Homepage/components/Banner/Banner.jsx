@@ -25,9 +25,9 @@ const Banner = () => {
       style={{
         backgroundImage: `url('https://media.themoviedb.org/t/p/w500_and_h282_face${data.results[0].poster_path}')`,
       }}
-      className="h-2/3 bg-cover relative"
+      className="h-2/5 bg-cover relative"
     >
-      <div className="inset-0 bg-gradient-to-b from-transparent to-black absolute"></div>
+      <div className="inset-0 bg-gradient-to-b from-transparent to-[rgb(20,20,20)] absolute"></div>
       <div className="flex flex-col justify-center pl-10 h-96">
         <h1 className="text-4xl text-white max-w-72 z-10">
           {data.results[0].title}
