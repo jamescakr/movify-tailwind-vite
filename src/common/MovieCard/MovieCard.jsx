@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Check, X, Plus, ThumbsUp, ThumbsDown, HandHeart } from "lucide-react";
+import LikeIconList from "../LikeIconList";
 
 const MovieCard = ({ movie }) => {
   const [isChecked, setIsChecked] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   const FromPlusToCheck = () => {
     setIsChecked(!isChecked);
@@ -36,8 +38,16 @@ const MovieCard = ({ movie }) => {
           <button className="flex items-center justify-center border-2 border-[rgb(147,147,147)] hover:border-white rounded-full w-9 h-9 mt-3 mx-2">
             <X className="h-5 w-5" strokeWidth={3} />
           </button>
-          <button className="flex items-center justify-center border-2 border-[rgb(147,147,147)] hover:border-white rounded-full w-9 h-9 mt-3 mx-2">
-            <ThumbsUp className="h-4 w-4" strokeWidth={3} />
+          <button
+            className="flex items-center justify-center border-2 border-[rgb(147,147,147)] hover:border-white delay-500 duration-500 rounded-full w-9 h-9 mt-3 mx-2"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            {isHovered ? (
+              <LikeIconList />
+            ) : (
+              <ThumbsUp className="h-4 w-4" strokeWidth={3} />
+            )}
           </button>
         </div>
       </div>

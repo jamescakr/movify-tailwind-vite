@@ -1,5 +1,5 @@
 import React from "react";
-import { usePopularMoviesQuery } from "../../../../hooks/usePopularMovies";
+import { usePopularMoviesQuery } from "../../../hooks/usePopularMovies";
 
 const Banner = () => {
   const { data, isLoading, isError, error } = usePopularMoviesQuery();

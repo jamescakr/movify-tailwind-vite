@@ -9,7 +9,7 @@ const AppLayout = () => {
 
   return (
     <div>
-      <div className="flex items-center justify-between bg-[rgb(16,16,16)] p-2">
+      <div className="flex items-center justify-between bg-[rgb(16,16,16)] p-2 bg-gradient-to-b from-transparent to-[(20,20,20)]">
         <div className="flex items-center space-x-6">
           <img src={logo} className="max-w-24" />
           <button

@@ -1,7 +1,7 @@
 import React from "react";
-import MovieSlider from "../../../../common/MovieSlider/MovieSlider";
-import { responsive } from "../../../../constants/responsive";
-import { useTopRatedMoviesQuery } from "../../../../hooks/useTopRatedMovies";
+import MovieSlider from "../../../common/MovieSlider/MovieSlider";
+import { responsive } from "../../../constants/responsive";
+import { useTopRatedMoviesQuery } from "../../../hooks/useTopRatedMovies";
 
 const TopRatedMovieSlide = () => {
   const { data, isLoading, isError, error } = useTopRatedMoviesQuery();
@@ -16,7 +16,7 @@ const TopRatedMovieSlide = () => {
   }
 
   if (error) {
-    console.log("error?", error);
+    console.log("error occurred from TopRatedMovieSlide", error);
   }
 
   return (
