@@ -1,12 +1,14 @@
 import React from "react";
 import Banner from "./components/Banner/Banner";
 import PopularMovieSlide from "./components/PopularMoviesSlide/PopularMovieSlide";
+import TopRatedMovieSlide from "./components/TopRatedMovieSlide/TopRatedMovieSlide";
 
 const Homepage = () => {
   return (
-    <div className="h-screen">
+    <div>
       <Banner />
       <PopularMovieSlide />
+      <TopRatedMovieSlide />
     </div>
   );
 };
