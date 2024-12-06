@@ -15,7 +15,7 @@ const MovieSlider = ({ title, movies, responsive }) => {
         containerClass="ml-14"
         itemClass=""
         centerMode={false}
-        slidesToSlide={responsive.desktop.items}
+        slidesToSlide={responsive.tablet.items}
       >
         {movies.map((movie, index) => (
           <MovieCard movie={movie} key={index} />

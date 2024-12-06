@@ -19,11 +19,12 @@ const Banner = () => {
   if (error) {
     console.log("error fetching data", error);
   }
-  console.log("ddd", data);
+  console.log("Popular Movie DATA", data);
+
   return (
     <div
       style={{
-        backgroundImage: `url('https://media.themoviedb.org/t/p/w500_and_h282_face${data.results[0].poster_path}')`,
+        backgroundImage: `url('https://media.themoviedb.org/t/p/w533_and_h300_bestv2${data.results[0].poster_path}')`,
       }}
       className="h-2/5 bg-cover relative"
     >
