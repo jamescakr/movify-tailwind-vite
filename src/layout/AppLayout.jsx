@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import logo from "../assets/images/Netflix_Logo.png";
 import { Search } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const AppLayout = () => {
+  const [keyword, setKeyword] = useState("");
   const navigate = useNavigate();
+
+  const searchByKeyword = (event) => {
+    event.preventDefault();
+    navigate(`/movies?q=${keyword}`);
+  };
 
   return (
     <div>
@@ -31,12 +37,17 @@ const AppLayout = () => {
         </div>
 
         <div>
-          <form className="flex items-center space-x-2 pr-4">
+          <form
+            className="flex items-center space-x-2 pr-4"
+            onSubmit={searchByKeyword}
+          >
             <input
               placeholder="Search"
-              className="border-2 border-red-600 rounded placeholder:text-sm p-0.5 pl-2 w-40"
+              className="bg-[rgb(3,3,3)] border border-white rounded placeholder:text-sm p-0.5 pl-2 w-60 h-9 focus:outline-none"
+              value={keyword}
+              onChange={(event) => setKeyword(event.target.value)}
             />
-            <button className="text-white">
+            <button type="submit">
               <Search className="w-6 h-6" />
             </button>
           </form>

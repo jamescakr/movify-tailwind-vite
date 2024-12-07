@@ -47,7 +47,6 @@ const MovieCard = ({ movie }) => {
           <div>
             <div>{movie.adult ? "over18" : "under18"}</div>
             <div>{movie.original_language}</div>
-            <div>{movie.popularity}</div>
           </div>
         </div>
 
