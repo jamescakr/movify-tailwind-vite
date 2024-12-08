@@ -3,12 +3,13 @@ import { usePopularMoviesQuery } from "../../../hooks/usePopularMovies";
 import "react-multi-carousel/lib/styles.css";
 import MovieSlider from "../../../common/MovieSlider/MovieSlider";
 import { responsive } from "../../../constants/responsive";
+import LoadingSpinner from "./LoadingSpinner";
 
 const PopularMovieSlide = () => {
   const { data, isLoading, isError, error } = usePopularMoviesQuery();
 
   if (isLoading) {
-    return <h1 className="text-2xl">Loading...</h1>;
+    return <LoadingSpinner />;
   }
 
   if (isError) {

@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import api from "../utils/api";
 
-const fetchPopularMovies = () => {
+const fetchPopularMovies = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 10000));
   return api.get("/movie/popular");
 };
 
