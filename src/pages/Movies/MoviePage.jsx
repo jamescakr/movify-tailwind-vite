@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import { useSearchMovieQuery } from "../../hooks/useSearchMovie";
 import { useSearchParams } from "react-router-dom";
-import MovieCard from "../../common/MovieCard/MovieCard";
 import { useInView } from "react-intersection-observer";
-import LoadingSpinner from "../Homepage/components/LoadingSpinner";
+import MovieCard from "../../common/MovieCard";
 
 const MoviePage = () => {
   const [query, setQuery] = useSearchParams();

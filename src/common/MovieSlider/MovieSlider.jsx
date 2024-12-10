@@ -1,7 +1,7 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
-import MovieCard from "../MovieCard/MovieCard";
 import "./MovieSlider.style.css";
+import MovieCard from "../MovieCard";
 
 const MovieSlider = ({ title, movies, responsive }) => {
   return (
