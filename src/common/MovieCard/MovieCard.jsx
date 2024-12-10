@@ -8,7 +8,7 @@ const MovieCard = ({ movie }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const { data: genreData } = useMovieGenreQuery();
-  console.log("genre DATA", genreData);
+  // console.log("genre DATA", genreData);
 
   const toggleCheckState = () => {
     setIsChecked(!isChecked);

@@ -6,7 +6,17 @@ import { responsive } from "../../../constants/responsive";
 import LoadingSpinner from "./LoadingSpinner";
 
 const PopularMovieSlide = () => {
-  const { data, isLoading, isError, error } = usePopularMoviesQuery();
+  const {
+    data,
+    isLoading,
+    isError,
+    error,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = usePopularMoviesQuery();
+
+  console.log("popular moviesss", data);
 
   if (isLoading) {
     return <LoadingSpinner />;
@@ -20,13 +30,12 @@ const PopularMovieSlide = () => {
     );
   }
 
+  const movies = data.pages.flatMap((page) => page.results);
+  //이거부터 해결해야함 왜 되는지 모르겠음..
+
   return (
     <div>
-      <MovieSlider
-        title="Popular Movies"
-        movies={data.results}
-        responsive={responsive}
-      />
+      <MovieSlider title="Popular Movies" movies={movies} responsive={responsive} />
     </div>
   );
 };

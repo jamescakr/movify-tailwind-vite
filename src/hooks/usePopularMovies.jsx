@@ -1,15 +1,18 @@
-import { useQuery } from "@tanstack/react-query";
-import api from "../utils/api";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { fetchMovies } from "../utils/api";
 
-const fetchPopularMovies = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 10000));
-  return api.get("/movie/popular");
-};
+// await new Promise((resolve) => setTimeout(resolve, 10000)); >> for loading spinner test
 
 export const usePopularMoviesQuery = () => {
-  return useQuery({
+  return useInfiniteQuery({
     queryKey: ["movie-popular"],
-    queryFn: fetchPopularMovies,
-    select: (result) => result.data,
+    queryFn: ({ pageParam = 1 }) => fetchMovies("/movie/popular", pageParam),
+    getNextPageParam: (lastPage) => {
+      if (lastPage.page < lastPage.total_pages) {
+        return lastPage.page + 1;
+      }
+      return undefined;
+    },
+    initialPageParam: 1,
   });
 };
