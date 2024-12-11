@@ -1,8 +1,8 @@
 import React from "react";
-import { usePopularMoviesQuery } from "../../../hooks/usePopularMovies";
+import { usePopularMoviesQuery } from "../../hooks/usePopularMovies";
 import "react-multi-carousel/lib/styles.css";
-import MovieSlider from "../../../common/MovieSlider/MovieSlider";
-import { responsive } from "../../../constants/responsive";
+import MovieSlider from "../../common/MovieSlider";
+import { responsive } from "../../constants/responsive";
 import LoadingSpinner from "./LoadingSpinner";
 
 const PopularMovieSlide = () => {
@@ -16,7 +16,7 @@ const PopularMovieSlide = () => {
     isFetchingNextPage,
   } = usePopularMoviesQuery();
 
-  console.log("popular moviesss", data);
+  // console.log("popular moviesss", data);
 
   if (isLoading) {
     return <LoadingSpinner />;

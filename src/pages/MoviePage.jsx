@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { useSearchMovieQuery } from "../../hooks/useSearchMovie";
+import { useSearchMovieQuery } from "../hooks/useSearchMovie";
 import { useSearchParams } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
-import MovieCard from "../../common/MovieCard";
+import MovieCard from "../common/MovieCard";
 
 const MoviePage = () => {
   const [query, setQuery] = useSearchParams();
@@ -17,7 +17,7 @@ const MoviePage = () => {
     hasNextPage,
     isFetchingNextPage,
   } = useSearchMovieQuery({ keyword });
-  console.log("search movie is ??", data);
+  // console.log("search movie is ??", data);
 
   const { ref, inView } = useInView();
 

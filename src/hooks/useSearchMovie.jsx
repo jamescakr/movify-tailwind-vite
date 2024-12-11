@@ -11,7 +11,7 @@ export const useSearchMovieQuery = ({ keyword }) => {
       ),
     getNextPageParam: (lastPage) => {
       if (lastPage.page < lastPage.total_pages) {
-        console.log("last page is", lastPage);
+        // console.log("last page is", lastPage);
 
         return lastPage.page + 1;
       }

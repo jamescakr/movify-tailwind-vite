@@ -1,11 +1,11 @@
 import React from "react";
 import "./App.css";
 import AppLayout from "./layout/AppLayout";
-import Homepage from "./pages/Homepage/Homepage";
-import MoviePage from "./pages/Movies/MoviePage";
-import MovieDetailPage from "./pages/MovieDetail/MovieDetailPage";
-import NotFoundPage from "./pages/NotFound/NotFoundPage";
+import Homepage from "./pages/Homepage";
+import MoviePage from "./pages/MoviePage";
+import MovieDetailPage from "./pages/MovieDetailPage";
 import { Route, Routes } from "react-router-dom";
+import NotFoundPage from "./pages/NotFoundPage";
 
 const App = () => {
   return (
