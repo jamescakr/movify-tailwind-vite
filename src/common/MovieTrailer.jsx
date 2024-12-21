@@ -4,7 +4,7 @@ import LoadingSpinner from "../pages/components/LoadingSpinner";
 
 const MovieTrailer = ({ movieId }) => {
   const { data, isLoading, isError, error } = useMovieTrailerQuery(movieId);
-  console.log("what DATA is this??", data);
+  console.log("video DATA", data);
 
   if (isLoading) {
     return <LoadingSpinner />;
@@ -20,15 +20,28 @@ const MovieTrailer = ({ movieId }) => {
     );
   }
 
-  if (error) {
-    console.log("error", error);
-    return <div>Failed to load movie trailer</div>;
+  const trailer = data?.find(
+    (video) => video.site === "YouTube" && video.type === "Trailer"
+  );
+
+  if (!trailer) {
+    return <div>No Trailer Available</div>;
   }
 
+  const trailerURL = `https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&loop=1&showinfo=0&iv_load_policy=3&cc_load_policy=1`;
+
   return (
-    <div className="border border-red-600 h-96 w-2/3">
-      <div>video test</div>
-      <div></div>
+    <div className="h-screen w-auto">
+      <iframe
+        className="pointer-events-none"
+        width="100%"
+        height="92%"
+        src={trailerURL}
+        title="Youtube Movie Trailer"
+        frameBorder="0"
+        allowFullScreen
+        allow="autoplay encrypted-media"
+      ></iframe>
     </div>
   );
 };

@@ -8,9 +8,11 @@ const Homepage = () => {
   return (
     <div>
       <Banner />
-      <PopularMovieSlide />
-      <TopRatedMovieSlide />
-      <UpcomingMovieSlide />
+      <div>
+        <PopularMovieSlide />
+        <TopRatedMovieSlide />
+        <UpcomingMovieSlide />
+      </div>
     </div>
   );
 };

@@ -9,6 +9,6 @@ export const useMovieTrailerQuery = (movieId) => {
   return useQuery({
     queryKey: ["play-trailer", movieId],
     queryFn: () => fetchMovieTrailer(movieId),
-    // select: (result) => result.data.results,
+    select: (result) => result.data.results,
   });
 };
