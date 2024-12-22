@@ -5,8 +5,8 @@ import MovieCard from "./MovieCard";
 
 const MovieSlider = ({ title, movies, responsive }) => {
   return (
-    <div className="">
-      <h3 className="text-[rgb(226,226,226)] text-2xl font-bold ml-14 mb-4 mt-14">
+    <div className="overflow-hidden h-96">
+      <h3 className="text-[rgb(226,226,226)] text-3xl font-bold ml-14 mb-6 mt-14">
         {title}
       </h3>
       <Carousel

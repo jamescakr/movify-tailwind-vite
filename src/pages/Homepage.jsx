@@ -6,9 +6,9 @@ import UpcomingMovieSlide from "./components/UpcomingMovieSlide";
 
 const Homepage = () => {
   return (
-    <div>
+    <div className="relative">
       <Banner />
-      <div>
+      <div className="absolute top-[58%] left-0 w-full z-10">
         <PopularMovieSlide />
         <TopRatedMovieSlide />
         <UpcomingMovieSlide />

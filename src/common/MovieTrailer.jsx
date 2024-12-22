@@ -28,14 +28,14 @@ const MovieTrailer = ({ movieId }) => {
     return <div>No Trailer Available</div>;
   }
 
-  const trailerURL = `https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&loop=1&showinfo=0&iv_load_policy=3&cc_load_policy=1`;
+  const trailerURL = `https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&loop=1&showinfo=0&iv_load_policy=3`;
 
   return (
-    <div className="h-screen w-auto">
+    <div className="relative h-full w-full overflow-hidden">
       <iframe
-        className="pointer-events-none"
+        className="absolute top-[-17%] left-0 w-full h-full object-cover pointer-events-none"
         width="100%"
-        height="92%"
+        height="100%"
         src={trailerURL}
         title="Youtube Movie Trailer"
         frameBorder="0"
