@@ -2,10 +2,10 @@ import React from "react";
 import { useMovieGenreQuery } from "../hooks/useMovieGenre";
 
 const GenreList = ({ movie }) => {
-  const showGenre = (genreIdList) => {
-    const { data: genreData } = useMovieGenreQuery();
-    // console.log("genre DATA", genreData);
+  const { data: genreData } = useMovieGenreQuery();
 
+  const showGenre = (genreIdList) => {
+    // console.log("genre DATA", genreData);
     if (!genreData) return [];
     const genreNameList = genreIdList.map((id) => {
       const genreObj = genreData.find((genre) => genre.id === id);

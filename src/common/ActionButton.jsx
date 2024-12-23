@@ -23,15 +23,21 @@ const ActionButton = () => {
           <X className="h-5 w-5" strokeWidth={3} />
         </button>
         <button
-          className="flex items-center justify-center border-2 border-[rgb(147,147,147)] hover:border-white delay-500 duration-500 rounded-full w-9 h-9 mt-3 mx-2"
+          className="flex items-center justify-center border-2 border-[rgb(147,147,147)] hover:border-white rounded-full w-9 h-9 mt-3 mx-2"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          {isHovered ? (
-            <LikeIconList />
-          ) : (
-            <ThumbsUp className="h-4 w-4" strokeWidth={3} />
-          )}
+          <ThumbsUp
+            className={`h-4 w-4 transition-all duration-1000 delay-1000 ${
+              isHovered ? "opacity-0" : "opacity-100"
+            }`}
+            strokeWidth={3}
+          />
+          <LikeIconList
+            className={`transition-all duration-1000 delay-1000 ${
+              isHovered ? "opacity-100" : "opacity-0"
+            }`}
+          />
         </button>
       </div>
     </div>
