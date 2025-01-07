@@ -4,6 +4,8 @@ import ActionButton from "./ActionButton";
 import MovieModal from "../pages/MovieModal";
 
 const MovieCard = ({ movie }) => {
+  // console.log("movie???", movie);
+
   const [showModal, setShowModal] = useState(false);
 
   const handleMovieClick = () => {

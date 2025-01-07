@@ -2,22 +2,38 @@ import React from "react";
 import MovieTrailer from "../common/MovieTrailer";
 import ModalPortal from "../common/ModalPortal";
 import { X } from "lucide-react";
+import { useMovieDetailQuery } from "../hooks/useMovieDetail";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 const MovieModal = ({ movieId, onClose }) => {
+  const { data, isLoading, isError } = useMovieDetailQuery(movieId);
+  console.log("Detail DATA", data);
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
   return (
     <ModalPortal>
-      <div className="fixed inset-0  bg-gray-800 bg-opacity-50 flex justify-center items-center pt-10 z-50">
-        <div className="bg-black rounded-lg shadow-lg max-w-3xl w-full h-3/4 p-6">
+      <div className="fixed inset-0  bg-black bg-opacity-60 flex justify-center items-center z-50">
+        <div className="relative bg-[rgb(24,24,24)] rounded-lg shadow-lg max-w-5xl w-full h-3/4 border-2 border-blue-600">
           <button
             onClick={(e) => {
               e.stopPropagation();
               onClose();
             }}
-            className="bg-[rgb(24,24,24)] w-10 h-10 rounded-full"
+            className="absolute top-5 right-5 flex justify-center items-center bg-[rgb(24,24,24)] w-10 h-10 rounded-full z-10"
           >
-            <X className="w-7 h-7" />
+            <X className="w-7 h-7" strokeWidth={1} />
           </button>
-          <MovieTrailer movieId={movieId} className="" />
+          <MovieTrailer movieId={movieId} iframeClassName="top-[-23%]" />
+          <div className="absolute top-[53%] border border-red-400 bg-[rgb(24,24,24)] h-2/5 w-full">
+            <div>{data.title}</div>
+            <div>{data.overview}</div>
+            <div>Release Date : {data.release_date}</div>
+            <div>Runtime : {data.runtime} min</div>
+            <div>Genre : {data.genres.map((genre) => genre.name)}</div>
+          </div>
         </div>
       </div>
     </ModalPortal>

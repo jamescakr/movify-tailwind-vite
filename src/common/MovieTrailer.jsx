@@ -2,9 +2,9 @@ import React from "react";
 import { useMovieTrailerQuery } from "../hooks/useMovieTrailer";
 import LoadingSpinner from "../pages/components/LoadingSpinner";
 
-const MovieTrailer = ({ movieId }) => {
+const MovieTrailer = ({ movieId, iframeClassName = "" }) => {
   const { data, isLoading, isError, error } = useMovieTrailerQuery(movieId);
-  console.log("video DATA", data);
+  console.log("trailer video DATA", data);
 
   if (isLoading) {
     return <LoadingSpinner />;
@@ -33,7 +33,7 @@ const MovieTrailer = ({ movieId }) => {
   return (
     <div className="relative h-full w-full overflow-hidden">
       <iframe
-        className="absolute top-[-17%] left-0 w-full h-full object-cover pointer-events-none"
+        className={`absolute left-0 w-full h-full object-cover pointer-events-none ${iframeClassName}`}
         width="100%"
         height="100%"
         src={trailerURL}
