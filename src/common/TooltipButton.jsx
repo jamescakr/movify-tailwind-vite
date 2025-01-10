@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Tooltip from "./Tooltip";
 
-const TooltipButton = ({ icon, onClick }) => {
+const TooltipButton = ({ icon, onClick, tooltip }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -13,7 +13,7 @@ const TooltipButton = ({ icon, onClick }) => {
         onMouseLeave={() => setIsHovered(false)}
       >
         {icon}
-        {isHovered && <Tooltip />}
+        {isHovered && <Tooltip tooltip={tooltip} />}
       </button>
     </div>
   );

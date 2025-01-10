@@ -4,6 +4,7 @@ import ModalPortal from "../common/ModalPortal";
 import { X } from "lucide-react";
 import { useMovieDetailQuery } from "../hooks/useMovieDetail";
 import LoadingSpinner from "./components/LoadingSpinner";
+import ActionBox from "../common/ActionBox";
 
 const MovieModal = ({ movieId, onClose }) => {
   const { data, isLoading, isError } = useMovieDetailQuery(movieId);
@@ -26,6 +27,9 @@ const MovieModal = ({ movieId, onClose }) => {
           >
             <X className="w-7 h-7" strokeWidth={1} />
           </button>
+          <div className="absolute top-60 left-10 z-30 bg-red-600">
+            <ActionBox />
+          </div>
           <MovieTrailer movieId={movieId} iframeClassName="top-[-23%]" />
           <div className="absolute top-[53%] border border-red-400 bg-[rgb(24,24,24)] h-2/5 w-full">
             <div>{data.title}</div>

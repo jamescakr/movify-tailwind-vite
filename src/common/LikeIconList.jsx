@@ -2,8 +2,6 @@ import { HandHeart, ThumbsDown, ThumbsUp } from "lucide-react";
 import React, { useState } from "react";
 
 const LikeIconList = () => {
-  const [isHovered, setIsHovered] = useState(false);
-
   return (
     <div className="flex items-center justify-center bg-[rgb(35,35,35)] w-40 h-12 rounded-full shadow-lg">
       <button className="flex items-center justify-center hover:bg-[rgb(54,54,54)] rounded-full w-9 h-9 mx-1">

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import GenreList from "./GenreList";
-import ActionButton from "./ActionButton";
+import ActionBox from "./ActionBox";
 import MovieModal from "../pages/MovieModal";
 
 const MovieCard = ({ movie }) => {
@@ -45,7 +45,7 @@ const MovieCard = ({ movie }) => {
         </div>
       </div>
       <div>
-        <ActionButton />
+        <ActionBox />
       </div>
     </div>
   );

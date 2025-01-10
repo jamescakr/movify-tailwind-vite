@@ -2,8 +2,8 @@ import React from "react";
 
 const Tooltip = ({ tooltip }) => {
   return (
-    <div className="w-24 h-10 rounded-lg bg-[rgb(230,230,230)] text-black absolute bottom-11">
-      <div>{tooltip}</div>
+    <div className="px-3 py-2 max-w-lg text-center rounded-lg bg-[rgb(230,230,230)] text-black absolute bottom-11 whitespace-nowrap">
+      {tooltip}
     </div>
   );
 };
