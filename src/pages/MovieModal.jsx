@@ -33,6 +33,7 @@ const MovieModal = ({ movieId, onClose }) => {
             <div>Release Date : {data.release_date}</div>
             <div>Runtime : {data.runtime} min</div>
             <div>Genre : {data.genres.map((genre) => genre.name)}</div>
+            <div>Cast : {data.credits.cast[0].name}</div>
           </div>
         </div>
       </div>

@@ -30,8 +30,10 @@ const MoviePage = () => {
   return (
     <div className="container mx-auto">
       <div className="grid grid-cols-12 gap-4">
-        <div className="col-span-12 lg:col-span-4">filter area</div>
-        <div className="col-span-12 lg:col-span-8 border border-green-600">
+        <div className="col-span-12 lg:col-span-4 border-2 border-blue-600">
+          filter area
+        </div>
+        <div className="col-span-12 lg:col-span-8 border-2 border-green-600">
           <div className="grid grid-cols-12 gap-4">
             {data?.pages?.length ? (
               data.pages.map((page) =>

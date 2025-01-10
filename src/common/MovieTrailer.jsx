@@ -4,7 +4,7 @@ import LoadingSpinner from "../pages/components/LoadingSpinner";
 
 const MovieTrailer = ({ movieId, iframeClassName = "" }) => {
   const { data, isLoading, isError, error } = useMovieTrailerQuery(movieId);
-  console.log("trailer video DATA", data);
+  // console.log("trailer video DATA", data);
 
   if (isLoading) {
     return <LoadingSpinner />;

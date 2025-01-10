@@ -6,7 +6,7 @@ import LoadingSpinner from "./LoadingSpinner";
 const Banner = () => {
   const [showText, setShowText] = useState(true);
   const { data, isLoading, isError, error } = useUpcomingMoviesQuery();
-  console.log("Upcoming Movies", data);
+  // console.log("Upcoming Movies", data);
   const [randomIndex, setRandomIndex] = useState(null);
 
   useEffect(() => {
