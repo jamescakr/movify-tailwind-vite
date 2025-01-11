@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Check, Plus, ThumbsUp } from "lucide-react";
 import LikeIconList from "./LikeIconList";
 import TooltipButton from "./TooltipButton";
-import Tooltip from "./TooltipButton";
 
 const ActionBox = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -23,15 +22,16 @@ const ActionBox = () => {
           tooltip={isChecked ? "Remove from My List" : "Add to My List"}
           onClick={toggleCheckState}
         />
-        <TooltipButton
-          icon={<ThumbsUp />}
-          tooltip="I like this"
+        <div
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-        />
-        {isHovered && (
-          <LikeIconList className="absolute top-full left-0 bg-red-600 z-50" />
-        )}
+          className="relative"
+        >
+          <TooltipButton icon={<ThumbsUp />} />
+          {isHovered && (
+            <LikeIconList className="absolute top-1 left-1/2 bg-[rgb(60,60,60)] shadow-2xl transform -translate-x-1/2 transition-all duration-300 ease-out scale-90 opacity-0 hover:scale-100 hover:opacity-100" />
+          )}
+        </div>
       </div>
     </div>
   );
