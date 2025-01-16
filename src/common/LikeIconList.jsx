@@ -3,7 +3,7 @@ import { Heart, ThumbsDown, ThumbsUp } from "lucide-react";
 import Tooltip from "./Tooltip";
 
 // 전체적으로 코드를 refactoring 한 이후 이해가 어려워짐...ㅠㅠ
-const LikeIconList = ({ className }) => {
+const LikeIconList = ({ className, isVisible }) => {
   const [hoveredButton, setHoveredButton] = useState(null);
   const [filledState, setFilledState] = useState({
     ThumbsDown: false,
@@ -12,10 +12,11 @@ const LikeIconList = ({ className }) => {
   });
 
   const toggleClick = (buttonName) => {
-    setFilledState((prev) => ({
-      ...prev, //React에서 부분변경만 되면 상태변화를 인지 못하므로, 이전 요소까지 모두 복사 붙여넣기해서 새로운 배열을 만들어서 업데이트 되도록 요청한다고 보면될듯
-      //...prev : ...는 스프레드 연산자, prev는 이전상태(업데이트 직전의 현재상태)를 나타냄
-      [buttonName]: !prev[buttonName],
+    setFilledState(() => ({
+      ThumbsUp: false,
+      ThumbsDown: false,
+      Heart: false,
+      [buttonName]: true,
     }));
   };
 
@@ -51,7 +52,13 @@ const LikeIconList = ({ className }) => {
 
   return (
     <div
-      className={`flex items-center justify-center bg-[rgb(35,35,35)] w-40 h-12 rounded-full shadow-lg ${className}`}
+      className={`flex items-center justify-center bg-[rgb(35,35,35)] w-40 h-12 rounded-full shadow-lg 
+        ${
+          isVisible
+            ? "opacity-100 pointer-events-auto scale-100"
+            : "opacity-0 pointer-events-none scale-90"
+        }
+        ${className}`}
     >
       {buttons.map((button) => {
         const isFilled = filledState[button.name]; //이 부분은 아직도 이해가 잘안됨. isFilled가 분명 정의 안하고도 쓸수있다고 했던것 같은데...
@@ -59,14 +66,11 @@ const LikeIconList = ({ className }) => {
         return (
           <button
             key={button.name}
-            className="flex items-center justify-center hover:bg-[rgb(45,45,45)] rounded-full w-9 h-9 mx-1"
+            className="flex items-center justify-center hover:bg-[rgb(45,45,45)] rounded-full w-9 h-9 mx-1 pointer-events-auto"
             onMouseEnter={() => setHoveredButton(button.name)}
             onMouseLeave={() => setHoveredButton(null)}
             onClick={() => toggleClick(button.name)}
           >
-            {/* typeof : 타입이 무엇인지 문자열로 나타내줌 */}
-            {/* 여기서 "function"의 의미는 함수인지를 물어보는것 */}
-            {/* 함수라면, button.icon의 isFilled를 실행 >> isFilled 여부에따라 다르게보임 */}
             {typeof button.icon === "function" ? button.icon(isFilled) : button.icon}
             {hoveredButton === button.name && <Tooltip tooltip={button.tooltip} />}
           </button>

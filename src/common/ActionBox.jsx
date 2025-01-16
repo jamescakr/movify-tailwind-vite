@@ -25,12 +25,13 @@ const ActionBox = () => {
         <div
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          className="relative"
+          className="relative inline-block"
         >
           <TooltipButton icon={<ThumbsUp />} />
-          {isHovered && (
-            <LikeIconList className="absolute top-1 left-1/2 bg-[rgb(60,60,60)] shadow-2xl transform -translate-x-1/2 transition-all duration-300 ease-out scale-90 opacity-0 hover:scale-100 hover:opacity-100" />
-          )}
+          <LikeIconList
+            isVisible={isHovered}
+            className="absolute top-1 left-1/2 bg-[rgb(60,60,60)] shadow-2xl transform -translate-x-1/2 transition-all duration-300 ease-out"
+          />
         </div>
       </div>
     </div>
