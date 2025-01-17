@@ -6,6 +6,7 @@ import MoviePage from "./pages/MoviePage";
 import { Route, Routes } from "react-router-dom";
 import NotFoundPage from "./pages/NotFoundPage";
 import MovieModal from "./pages/MovieModal";
+import "animate.css";
 
 const App = () => {
   return (

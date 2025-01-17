@@ -3,21 +3,34 @@ import { Heart, ThumbsDown, ThumbsUp } from "lucide-react";
 import Tooltip from "./Tooltip";
 
 // 전체적으로 코드를 refactoring 한 이후 이해가 어려워짐...ㅠㅠ
-const LikeIconList = ({ className, isVisible }) => {
+const LikeIconList = ({ className, filledState, setFilledState }) => {
   const [hoveredButton, setHoveredButton] = useState(null);
-  const [filledState, setFilledState] = useState({
-    ThumbsDown: false,
-    ThumbsUp: false,
-    Heart: false,
+  const [iconAnimation, setIconAnimation] = useState({
+    ThumbsDown: "",
+    ThumbsUp: "",
+    Heart: "",
   });
 
   const toggleClick = (buttonName) => {
-    setFilledState(() => ({
+    setFilledState((prev) => ({
       ThumbsUp: false,
       ThumbsDown: false,
       Heart: false,
-      [buttonName]: true,
+      [buttonName]: !prev[buttonName], //이 코드가 실행되기 전 위의 3줄에서 모든 아이콘이 false로 바뀌고나서 이 코드로 새로 적용이 됨
     }));
+    setIconAnimation((prev) => ({
+      ...prev,
+      [buttonName]: "animate__animated animate__heartBeat",
+    }));
+
+    setTimeout(() => {
+      setIconAnimation((prev) => ({
+        ...prev,
+        [buttonName]: "",
+      }));
+    }, 1000);
+
+    setHoveredButton(null);
   };
 
   const buttons = [
@@ -52,21 +65,16 @@ const LikeIconList = ({ className, isVisible }) => {
 
   return (
     <div
-      className={`flex items-center justify-center bg-[rgb(35,35,35)] w-40 h-12 rounded-full shadow-lg 
-        ${
-          isVisible
-            ? "opacity-100 pointer-events-auto scale-100"
-            : "opacity-0 pointer-events-none scale-90"
-        }
-        ${className}`}
+      className={`flex items-center justify-center bg-[rgb(35,35,35)] w-40 h-12 rounded-full shadow-lg ${className}`}
     >
       {buttons.map((button) => {
-        const isFilled = filledState[button.name]; //이 부분은 아직도 이해가 잘안됨. isFilled가 분명 정의 안하고도 쓸수있다고 했던것 같은데...
+        const isFilled = filledState[button.name];
+        const buttonAnimation = iconAnimation[button.name];
 
         return (
           <button
             key={button.name}
-            className="flex items-center justify-center hover:bg-[rgb(45,45,45)] rounded-full w-9 h-9 mx-1 pointer-events-auto"
+            className={`flex items-center justify-center hover:bg-[rgb(45,45,45)] rounded-full w-9 h-9 mx-1 ${buttonAnimation}`}
             onMouseEnter={() => setHoveredButton(button.name)}
             onMouseLeave={() => setHoveredButton(null)}
             onClick={() => toggleClick(button.name)}
