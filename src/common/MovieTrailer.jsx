@@ -31,7 +31,7 @@ const MovieTrailer = ({ movieId, iframeClassName = "" }) => {
   const trailerURL = `https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&loop=1&showinfo=0&iv_load_policy=3`;
 
   return (
-    <div className="relative h-full w-full overflow-hidden">
+    <div className="relative w-full h-full overflow-hidden">
       <iframe
         className={`absolute left-0 w-full h-full object-cover pointer-events-none ${iframeClassName}`}
         width="100%"

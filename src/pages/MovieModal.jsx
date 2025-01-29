@@ -14,10 +14,14 @@ const MovieModal = ({ movieId, onClose }) => {
     return <LoadingSpinner />;
   }
 
+  const runtime = data.runtime;
+  const hours = Math.floor(runtime / 60);
+  const minutes = runtime % 60; //60으로 나눈 후 "나머지값" 반환
+
   return (
     <ModalPortal>
       <div className="fixed inset-0  bg-black bg-opacity-60 flex justify-center items-center z-50">
-        <div className="relative bg-[rgb(24,24,24)] rounded-lg shadow-lg max-w-5xl w-full h-3/4 border-2 border-blue-600">
+        <div className="relative bg-[rgb(24,24,24)] rounded-lg shadow-lg max-w-5xl w-full h-4/5">
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -27,17 +31,26 @@ const MovieModal = ({ movieId, onClose }) => {
           >
             <X className="w-7 h-7" strokeWidth={1} />
           </button>
-          <div className="absolute top-60 left-10 z-30 bg-red-600">
-            <ActionBox />
+          <div className="relative h-[60%]">
+            <MovieTrailer movieId={movieId} iframeClassName="top-0" />
+            <div className="absolute top-56 left-10 z-50">
+              <ActionBox />
+            </div>
           </div>
-          <MovieTrailer movieId={movieId} iframeClassName="top-[-23%]" />
-          <div className="absolute top-[53%] border border-red-400 bg-[rgb(24,24,24)] h-2/5 w-full">
+
+          <div className="relative h-[40%] bg-[rgb(24,24,24)] text-[rgb(175,175,175)]">
+            <div className="flex py-5 m-10">
+              <div>{data.release_date.slice(0, 4)}</div>
+              <div>
+                {hours}h {minutes}m
+              </div>
+            </div>
             <div>{data.title}</div>
             <div>{data.overview}</div>
-            <div>Release Date : {data.release_date}</div>
-            <div>Runtime : {data.runtime} min</div>
-            <div>Genre : {data.genres.map((genre) => genre.name)}</div>
-            <div>Cast : {data.credits.cast[0].name}</div>
+            <div>
+              <div>Genre : {data.genres.map((genre) => genre.name)}</div>
+              <div>Cast : {data?.credits?.cast[0]?.name || "N/A"}</div>
+            </div>
           </div>
         </div>
       </div>
