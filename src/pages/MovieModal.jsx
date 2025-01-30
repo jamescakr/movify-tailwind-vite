@@ -21,7 +21,7 @@ const MovieModal = ({ movieId, onClose }) => {
   return (
     <ModalPortal>
       <div className="fixed inset-0  bg-black bg-opacity-60 flex justify-center items-center z-50">
-        <div className="relative bg-[rgb(24,24,24)] rounded-lg shadow-lg max-w-5xl w-full h-4/5">
+        <div className="relative bg-[rgb(24,24,24)] rounded-lg shadow-lg max-w-5xl w-3/5 h-4/5">
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -33,9 +33,10 @@ const MovieModal = ({ movieId, onClose }) => {
           </button>
           <div className="relative h-[60%]">
             <MovieTrailer movieId={movieId} iframeClassName="top-0" />
-            <div className="absolute top-56 left-10 z-50">
+            <div className="absolute top-64 left-10 z-50 border border-red-600 rounded-lg">
               <ActionBox />
             </div>
+            <div className="absolute bottom-0 left-0 w-full h-56 bg-gradient-to-b from-transparent via=[rgba(24,24,24,0.5)] to-[rgb(24,24,24)] pointer-events-none" />
           </div>
 
           <div className="relative h-[40%] bg-[rgb(24,24,24)] text-[rgb(175,175,175)]">
