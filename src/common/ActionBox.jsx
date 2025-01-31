@@ -23,7 +23,7 @@ const ActionBox = () => {
     <div>
       <div
         onClick={(event) => event.stopPropagation()}
-        className="relative flex opacity-0 group-hover:opacity-100 group-hover:bg-[rgb(40,40,40)] duration-200 delay-500 h-14 rounded-b-lg"
+        className="relative flex duration-200 delay-500 rounded-b-lg"
       >
         <TooltipButton
           icon={isChecked ? <Check /> : <Plus />}
@@ -35,7 +35,7 @@ const ActionBox = () => {
           onMouseLeave={() => setIsHovered(false)}
           className="relative"
         >
-          <TooltipButton icon={<ThumbsUp />} />
+          <TooltipButton icon={<ThumbsUp className="w-5 h-5" />} />
           {isHovered && (
             <LikeIconList
               className="absolute top-1 left-1/2 bg-[rgb(60,60,60)] shadow-2xl transform -translate-x-1/2 "

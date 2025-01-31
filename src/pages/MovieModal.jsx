@@ -33,24 +33,38 @@ const MovieModal = ({ movieId, onClose }) => {
           </button>
           <div className="relative h-[60%]">
             <MovieTrailer movieId={movieId} iframeClassName="top-0" />
-            <div className="absolute top-64 left-10 z-50 border border-red-600 rounded-lg">
+            <div className="absolute bottom-[5%] left-[5%] text-3xl font-bold z-50 text-white">
+              {data?.title}
+            </div>
+            <div className="absolute bottom-[20%] left-[5%] z-50 transform scale-125">
               <ActionBox />
             </div>
             <div className="absolute bottom-0 left-0 w-full h-56 bg-gradient-to-b from-transparent via=[rgba(24,24,24,0.5)] to-[rgb(24,24,24)] pointer-events-none" />
           </div>
 
-          <div className="relative h-[40%] bg-[rgb(24,24,24)] text-[rgb(175,175,175)]">
-            <div className="flex py-5 m-10">
-              <div>{data.release_date.slice(0, 4)}</div>
+          {/* movie info box */}
+          <div className="flex relative h-[40%] bg-[rgb(24,24,24)] text-[rgb(175,175,175)]">
+            <div className="w-3/5 p-10">
+              <div className="flex mb-5">
+                <div className="mr-3">{data.release_date.slice(0, 4)}</div>
+                <div>
+                  {hours}h {minutes}m
+                </div>
+              </div>
               <div>
-                {hours}h {minutes}m
+                {data.overview.length > 200
+                  ? data.overview.substring(0, 200) + "..."
+                  : data.overview}
               </div>
             </div>
-            <div>{data.title}</div>
-            <div>{data.overview}</div>
-            <div>
-              <div>Genre : {data.genres.map((genre) => genre.name)}</div>
-              <div>Cast : {data?.credits?.cast[0]?.name || "N/A"}</div>
+            <div className="w-2/5 p-10">
+              <div>
+                <span className="text-[#777]">Genre : </span>
+                <span>{data.genres.map((genre) => genre.name)}</span>
+              </div>
+              <span className="text-[#777]">Cast :</span>
+              <span>{data?.credits?.cast[0]?.name || "N/A"}</span>
+              <div></div>
             </div>
           </div>
         </div>

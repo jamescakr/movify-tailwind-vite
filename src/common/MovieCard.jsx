@@ -44,7 +44,7 @@ const MovieCard = ({ movie }) => {
           <div>{movie.original_language}</div>
         </div>
       </div>
-      <div>
+      <div className="relative flex opacity-0 group-hover:opacity-100 group-hover:bg-[rgb(40,40,40)] duration-200 delay-500 h-14 rounded-b-lg">
         <ActionBox />
       </div>
     </div>

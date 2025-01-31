@@ -42,7 +42,7 @@ const MovieTrailer = ({ movieId, iframeClassName = "" }) => {
           minWidth: "100%",
           minHeight: "100%",
           transform: "translate(-50%, -50%) scale(1.4)", //3)프레임이 오른쪽 아래로 치우쳐져있으니 그 프레임을 기준으로 x축으로 왼쪽으로 반(-50%)만큼 y축으로 위쪽으로 반(-50%)만큼 오면 정중앙에 위치하게됨, 즉 위의 50%와 translate(-50%)는 숫자만 같을뿐 기준이 다르다!
-          transformOrigin: "center center", //x축(가로) y축(세로) 기준
+          transformOrigin: "center center", //"x축(가로) y축(세로)" 즉, 중앙을 기준으로 확대시킴. "left top"이라면 왼쪽 위 모서리를 기준으로 확대함
         }}
         src={trailerURL}
         title="Youtube Movie Trailer"
