@@ -8,7 +8,7 @@ const TopRatedMovieSlide = () => {
   // console.log("Top Rated Movies DATA", data);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return null;
   }
 
   if (isError) {

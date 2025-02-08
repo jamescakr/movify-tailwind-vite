@@ -17,10 +17,10 @@ const GenreList = ({ movie }) => {
 
   return (
     <div>
-      <div className="flex">
+      <div className="flex flex-wrap w-auto gap-1 ml-2">
         {showGenre(movie.genre_ids).map((genre, index) => (
           <div
-            className="flex justify-center items-center bg-red-500 rounded-lg w-20 h-6 text-white text-xs font-bold"
+            className="flex justify-center items-center bg-red-500 rounded-lg h-6 px-1 text-white text-xs font-bold"
             key={index}
           >
             {genre}

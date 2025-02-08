@@ -4,10 +4,10 @@ import { fetchMovies } from "../utils/api";
 export const useSearchMovieQuery = ({ keyword }) => {
   return useInfiniteQuery({
     queryKey: ["search-movie", keyword],
-    queryFn: ({ pageParams = 1 }) =>
+    queryFn: ({ pageParam = 1 }) =>
       fetchMovies(
         keyword ? `/search/movie?query=${keyword}` : "/movie/popular",
-        pageParams
+        pageParam
       ),
     getNextPageParam: (lastPage) => {
       if (lastPage.page < lastPage.total_pages) {

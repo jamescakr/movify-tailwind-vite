@@ -3,8 +3,14 @@ import GenreList from "./GenreList";
 import ActionBox from "./ActionBox";
 import MovieModal from "../pages/MovieModal";
 
+// 2. MovieCard
+//  - 장르 UI 수정 + 띄어쓰기
+//  - 전체적인 UI 수정
+//  - 호버 확대 되었을때 오른쪽 잘리는 부분 해결
+//  - 체크버튼 딜레이주기
+
 const MovieCard = ({ movie }) => {
-  // console.log("movie???", movie);
+  console.log("movie???", movie);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -28,20 +34,14 @@ const MovieCard = ({ movie }) => {
         <MovieModal
           movieId={movie.id}
           onClose={() => {
-            // console.log("onClose Called");
             setShowModal(false);
-            // console.log("after setShowModal:", showModal);
           }}
         />
       )}
       <div className="bg-[rgba(43,41,41,0.5)] opacity-0 hover:opacity-100 duration-200 delay-500 w-full h-full">
         <h1 className="text-2xl h-16">{movie.title}</h1>
-        <div>
+        <div className="mt-2">
           <GenreList movie={movie} />
-        </div>
-        <div>
-          <div>{movie.adult ? "over18" : "under18"}</div>
-          <div>{movie.original_language}</div>
         </div>
       </div>
       <div className="relative flex opacity-0 group-hover:opacity-100 group-hover:bg-[rgb(40,40,40)] duration-200 delay-500 h-14 rounded-b-lg">

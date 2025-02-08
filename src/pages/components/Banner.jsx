@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import MovieTrailer from "../../common/MovieTrailer";
 import { useUpcomingMoviesQuery } from "../../hooks/useUpcomingMovies";
-import LoadingSpinner from "./LoadingSpinner";
+
+// 4. Banner
+//  - Netflix 누르면 홈화면으로 이동
+//  - 영화 설명부분 제목이랑 공간 확보
 
 const Banner = () => {
   const [showText, setShowText] = useState(true);
@@ -18,7 +21,7 @@ const Banner = () => {
   }, []);
 
   if (isLoading) {
-    return <LoadingSpinner />;
+    return null;
   }
 
   if (isError) {
@@ -27,7 +30,7 @@ const Banner = () => {
 
   if (randomIndex === null) {
     setRandomIndex(() => Math.floor(Math.random() * data.results.length));
-    return <LoadingSpinner />;
+    return null;
   }
 
   const selectRandomMovie = data.results[randomIndex];

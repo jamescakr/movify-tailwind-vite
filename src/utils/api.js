@@ -12,8 +12,9 @@ const api = axios.create({
 });
 
 //newly-added common api fetching for infinite scroll
-export const fetchMovies = async (path, page) => {
-  const response = await api.get(`${path}?page=${page}`);
+export const fetchMovies = async (path, pageParam = 1) => {
+  const separator = path.includes("?") ? "&" : "?";
+  const response = await api.get(`${path}${separator}page=${pageParam}`);
   return response.data;
 };
 

@@ -1,13 +1,13 @@
 import React from "react";
 import { useMovieTrailerQuery } from "../hooks/useMovieTrailer";
-import LoadingSpinner from "../pages/components/LoadingSpinner";
+import { Frown } from "lucide-react";
 
 const MovieTrailer = ({ movieId, iframeClassName = "" }) => {
   const { data, isLoading, isError, error } = useMovieTrailerQuery(movieId);
   // console.log("trailer video DATA", data);
 
   if (isLoading) {
-    return <LoadingSpinner />;
+    return null;
   }
 
   if (isError) {
@@ -25,7 +25,17 @@ const MovieTrailer = ({ movieId, iframeClassName = "" }) => {
   );
 
   if (!trailer) {
-    return <div>No Trailer Available</div>;
+    return (
+      <div className="h-full">
+        <div className="flex justify-center items-center h-full text-gray-400">
+          <Frown className="w-10 h-10 mr-3" />
+          <div className="flex flex-col items-center text-xl">
+            <div>NO TRAILER AVAILABLE</div>
+            <div>FOR THIS FILM</div>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   const trailerURL = `https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&loop=1&showinfo=0&iv_load_policy=3`;
@@ -45,7 +55,7 @@ const MovieTrailer = ({ movieId, iframeClassName = "" }) => {
           transformOrigin: "center center", //"x축(가로) y축(세로)" 즉, 중앙을 기준으로 확대시킴. "left top"이라면 왼쪽 위 모서리를 기준으로 확대함
         }}
         src={trailerURL}
-        title="Youtube Movie Trailer"
+        https:title="Youtube Movie Trailer" //www.youtube.com/watch?v=Vnrcj0kswUk
         // frameBorder="0"
         allowFullScreen
         allow="autoplay encrypted-media"

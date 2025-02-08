@@ -8,7 +8,7 @@ const UpcomingMovieSlide = () => {
   // console.log("Upcoming DATA", data);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return null;
   }
 
   if (isError) {

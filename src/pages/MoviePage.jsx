@@ -3,6 +3,10 @@ import { useSearchMovieQuery } from "../hooks/useSearchMovie";
 import { useSearchParams } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 import MovieCard from "../common/MovieCard";
+import LoadingSpinner from "../pages/components/LoadingSpinner";
+
+// 3. MoviePage
+//  - 필터 기능구현
 
 const MoviePage = () => {
   const [query, setQuery] = useSearchParams();
@@ -25,11 +29,11 @@ const MoviePage = () => {
     if (inView && hasNextPage && !isFetchingNextPage) {
       fetchNextPage();
     }
-  }, [inView]);
+  }, [inView, hasNextPage]);
 
   return (
     <div className="container mx-auto">
-      <div className="grid grid-cols-12 gap-4">
+      <div className="grid grid-cols-12 gap-4 mt-12">
         <div className="col-span-12 lg:col-span-4 border-2 border-blue-600">
           filter area
         </div>
@@ -52,9 +56,11 @@ const MoviePage = () => {
           </div>
         </div>
       </div>
-      <h1 className="text-4xl flex justify-center" ref={ref}>
-        Load More
-      </h1>
+      {hasNextPage && (
+        <h1 className="flex justify-center" ref={ref}>
+          <LoadingSpinner />
+        </h1>
+      )}
     </div>
   );
 };
