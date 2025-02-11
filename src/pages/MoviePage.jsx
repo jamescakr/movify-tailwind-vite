@@ -4,9 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 import MovieCard from "../common/MovieCard";
 import LoadingSpinner from "../pages/components/LoadingSpinner";
-
-// 3. MoviePage
-//  - 필터 기능구현
+import GenreFilter from "../common/GenreFilter";
 
 const MoviePage = () => {
   const [query, setQuery] = useSearchParams();
@@ -21,7 +19,7 @@ const MoviePage = () => {
     hasNextPage,
     isFetchingNextPage,
   } = useSearchMovieQuery({ keyword });
-  // console.log("search movie is ??", data);
+  console.log("search movie is ??", data);
 
   const { ref, inView } = useInView();
 
@@ -34,10 +32,11 @@ const MoviePage = () => {
   return (
     <div className="container mx-auto">
       <div className="grid grid-cols-12 gap-4 mt-12">
-        <div className="col-span-12 lg:col-span-4 border-2 border-blue-600">
-          filter area
+        <div className="col-span-12 lg:col-span-4">
+          <div className="ml-10 mb-5 text-2xl">Genre</div>
+          <GenreFilter />
         </div>
-        <div className="col-span-12 lg:col-span-8 border-2 border-green-600">
+        <div className="col-span-12 lg:col-span-8">
           <div className="grid grid-cols-12 gap-4">
             {data?.pages?.length ? (
               data.pages.map((page) =>

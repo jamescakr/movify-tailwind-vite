@@ -3,14 +3,8 @@ import GenreList from "./GenreList";
 import ActionBox from "./ActionBox";
 import MovieModal from "../pages/MovieModal";
 
-// 2. MovieCard
-//  - 장르 UI 수정 + 띄어쓰기
-//  - 전체적인 UI 수정
-//  - 호버 확대 되었을때 오른쪽 잘리는 부분 해결
-//  - 체크버튼 딜레이주기
-
 const MovieCard = ({ movie }) => {
-  console.log("movie???", movie);
+  // console.log("movie???", movie);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -39,7 +33,7 @@ const MovieCard = ({ movie }) => {
         />
       )}
       <div className="bg-[rgba(43,41,41,0.5)] opacity-0 hover:opacity-100 duration-200 delay-500 w-full h-full">
-        <h1 className="text-2xl h-16">{movie.title}</h1>
+        <h1 className="text-2xl h-16 pl-2 pt-2">{movie.title}</h1>
         <div className="mt-2">
           <GenreList movie={movie} />
         </div>

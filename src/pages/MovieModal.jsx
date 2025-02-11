@@ -29,7 +29,7 @@ const MovieModal = ({ movieId, onClose }) => {
       <div
         className="fixed inset-0  bg-black bg-opacity-60 flex justify-center items-center z-50"
         onClick={(e) => {
-          console.log("overlay clicked!!!");
+          // console.log("overlay clicked!!!");
           onClose();
         }}
       >
