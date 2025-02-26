@@ -5,11 +5,11 @@ const GenreList = ({ movie }) => {
   const { data: genreData } = useMovieGenreQuery();
 
   const showGenre = (genreIdList) => {
-    // console.log("genre DATA", genreData);
+    console.log("genre DATA", genreData);
     if (!genreData) return [];
     const genreNameList = genreIdList.map((id) => {
-      const genreObj = genreData.find((genre) => genre.id === id);
-      return genreObj.name;
+      const matchedGenre = genreData.find((genre) => genre.id === id);
+      return matchedGenre.name;
     });
 
     return genreNameList;

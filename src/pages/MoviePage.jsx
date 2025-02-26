@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSearchMovieQuery } from "../hooks/useSearchMovie";
 import { useSearchParams } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
@@ -9,6 +9,7 @@ import GenreFilter from "../common/GenreFilter";
 const MoviePage = () => {
   const [query, setQuery] = useSearchParams();
   const keyword = query.get("q");
+  const [selectedGenre, setSelectedGenre] = useState(null);
 
   const {
     data,
@@ -18,7 +19,7 @@ const MoviePage = () => {
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-  } = useSearchMovieQuery({ keyword });
+  } = useSearchMovieQuery({ keyword, selectedGenre });
   console.log("search movie is ??", data);
 
   const { ref, inView } = useInView();
@@ -27,28 +28,34 @@ const MoviePage = () => {
     if (inView && hasNextPage && !isFetchingNextPage) {
       fetchNextPage();
     }
-  }, [inView, hasNextPage]);
+  }, [inView, hasNextPage, isFetchingNextPage]);
+
+  const allMovies = data?.pages?.flatMap((page) => page.results) || [];
+  const filteredMovies = selectedGenre
+    ? allMovies.filter((movie) => movie.genre_ids.includes(Number(selectedGenre)))
+    : allMovies;
 
   return (
     <div className="container mx-auto">
       <div className="grid grid-cols-12 gap-4 mt-12">
         <div className="col-span-12 lg:col-span-4">
           <div className="ml-10 mb-5 text-2xl">Genre</div>
-          <GenreFilter />
+          <GenreFilter
+            selectedGenre={selectedGenre}
+            onGenreSelect={setSelectedGenre}
+          />
         </div>
         <div className="col-span-12 lg:col-span-8">
           <div className="grid grid-cols-12 gap-4">
-            {data?.pages?.length ? (
-              data.pages.map((page) =>
-                page.results.map((movie) => (
-                  <div
-                    className="col-span-12 md:col-span-4 lg:col-span-3"
-                    key={movie.id}
-                  >
-                    <MovieCard movie={movie} />
-                  </div>
-                ))
-              )
+            {filteredMovies.length > 0 ? (
+              filteredMovies.map((movie) => (
+                <div
+                  className="col-span-12 md:col-span-4 lg:col-span-3"
+                  key={movie.id}
+                >
+                  <MovieCard movie={movie} />
+                </div>
+              ))
             ) : (
               <div>No Movies found </div>
             )}
