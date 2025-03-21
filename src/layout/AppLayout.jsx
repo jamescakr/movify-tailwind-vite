@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
-import logo from "../assets/images/Netflix_Logo.png";
+import logo from "../assets/images/logo.png";
 import { Search } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 

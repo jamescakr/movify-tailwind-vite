@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useMovieGenreQuery } from "../hooks/useMovieGenre";
 import LoadingSpinner from "../pages/components/LoadingSpinner";
 
