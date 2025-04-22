@@ -16,16 +16,22 @@ const AppLayout = () => {
   return (
     <div>
       <div className="flex items-center justify-between bg-[rgb(16,16,16)] p-2 bg-gradient-to-b from-transparent to-[(20,20,20)]">
-        <div className="flex items-center space-x-6">
-          <img src={logo} className="max-w-24" />
-          <button
+        <div className="flex items-center space-x-2  sm:space-x-6">
+          <img
+            src={logo}
+            className="max-w-24 sm:ml-10"
+            onClick={() => {
+              navigate("/");
+            }}
+          />
+          {/* <button
             className="text-white"
             onClick={() => {
               navigate("/");
             }}
           >
             Home
-          </button>
+          </button> */}
           <button
             className="text-white"
             onClick={() => {
@@ -43,12 +49,12 @@ const AppLayout = () => {
           >
             <input
               placeholder="Search"
-              className="bg-[rgb(3,3,3)] border border-white rounded placeholder:text-sm p-0.5 pl-2 w-60 h-9 focus:outline-none"
+              className="bg-[rgb(3,3,3)] border border-white rounded placeholder:text-sm p-0.5 pl-2 w-36 sm:w-60 h-9 focus:outline-none"
               value={keyword}
               onChange={(event) => setKeyword(event.target.value)}
             />
             <button type="submit">
-              <Search className="w-6 h-6" />
+              <Search className="w-0 h-0 sm:w-6 sm:h-6" />
             </button>
           </form>
         </div>
