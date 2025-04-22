@@ -40,7 +40,7 @@ const Banner = () => {
     <div className="relative h-[40vh] sm:h-[60vh] md:h-[80vh] lg:h-screen">
       <MovieTrailer movieId={movieId} iframeClassName="top-[-17%]" />
       <div
-        className={`absolute top-[25%] left-[5%] font-bold z-20 transition-all duration-[2000ms] ${
+        className={`absolute top-[20%] left-[5%] font-bold z-20 transition-all duration-[2000ms] ${
           showText
             ? "text-3xl sm:text-4xl md:text-6xl lg:text-8xl xl:text-10xl"
             : "text-2xl sm:text-3xl md:text-3xl lg:text-5xl xl:text-6xl"
