@@ -6,3 +6,7 @@ body {
 .react-multi-carousel-list {
   overflow: visible !important;
 }
+
+#root {
+  overflow-x: hidden;
+}

@@ -37,7 +37,7 @@ const Banner = () => {
   const movieId = selectRandomMovie.id;
 
   return (
-    <div className="relative h-[40vh] sm:h-[60vh] md:h-[80vh] lg:h-screen">
+    <div className="relative w-full h-[40vh] sm:h-[60vh] md:h-[80vh] lg:h-screen">
       <MovieTrailer movieId={movieId} iframeClassName="top-[-17%]" />
       <div
         className={`absolute top-[20%] left-[5%] font-bold z-20 transition-all duration-[2000ms] ${
@@ -51,7 +51,7 @@ const Banner = () => {
           : selectRandomMovie.title}
       </div>
       <div
-        className={`absolute top-[35%] left-[5%] text-2xl z-20 w-1/3 transition-opacity duration-[2000ms]  ${
+        className={`absolute top-[35%] left-[5%] text-2xl z-20 w-2/3 lg:w-1/3 transition-opacity duration-[2000ms]  ${
           showText ? "opacity-100" : "opacity-0"
         } ${"text-xs sm:text-sm md:text-base lg:text-xl"}`}
       >

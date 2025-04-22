@@ -12,7 +12,7 @@ const MovieSlider = ({ title, movies, responsive }) => {
       <Carousel
         responsive={responsive}
         infinite={true}
-        containerClass="ml-14"
+        containerClass="ml-0 md:ml-14"
         itemClass=""
         centerMode={false}
         slidesToSlide={responsive.tablet.items}
