@@ -18,6 +18,7 @@ const MoviePage = () => {
     error,
     fetchNextPage,
     hasNextPage,
+    isFetching,
     isFetchingNextPage,
   } = useSearchMovieQuery({ keyword, selectedGenre });
   console.log("search movie is ??", data);
@@ -35,6 +36,8 @@ const MoviePage = () => {
     ? allMovies.filter((movie) => movie.genre_ids.includes(Number(selectedGenre)))
     : allMovies;
 
+  const noResultFound = !isLoading && !isFetching && filteredMovies.length === 0;
+
   return (
     <div className="container mx-auto">
       <div className="grid grid-cols-12 gap-4 mt-12">
@@ -47,16 +50,7 @@ const MoviePage = () => {
         </div>
         <div className="col-span-12 lg:col-span-8">
           <div className="grid grid-cols-12 gap-4">
-            {filteredMovies.length > 0 ? (
-              filteredMovies.map((movie) => (
-                <div
-                  className="col-span-12 md:col-span-4 lg:col-span-3"
-                  key={movie.id}
-                >
-                  <MovieCard movie={movie} />
-                </div>
-              ))
-            ) : (
+            {noResultFound ? (
               <div className="col-span-12 text-sm md:text-lg">
                 <div className="ml-3 sm:ml-0 mb-5">
                   Oops! We couldn’t find anything matching "{keyword}".
@@ -70,6 +64,15 @@ const MoviePage = () => {
                   <li className="ml-3 lg:ml-10">Browsing popular picks instead!</li>
                 </ul>
               </div>
+            ) : (
+              filteredMovies.map((movie) => (
+                <div
+                  className="col-span-12 md:col-span-4 lg:col-span-3"
+                  key={movie.id}
+                >
+                  <MovieCard movie={movie} />
+                </div>
+              ))
             )}
           </div>
         </div>
