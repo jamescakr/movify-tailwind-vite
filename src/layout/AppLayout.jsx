@@ -10,7 +10,8 @@ const AppLayout = () => {
 
   const searchByKeyword = (event) => {
     event.preventDefault();
-    navigate(`/movies?q=${keyword}`);
+    const trimmed = keyword.trim();
+    trimmed ? navigate(`/movies?q=${keyword}`) : navigate("/movies");
   };
 
   return (

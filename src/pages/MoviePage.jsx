@@ -57,7 +57,19 @@ const MoviePage = () => {
                 </div>
               ))
             ) : (
-              <div>No Movies found </div>
+              <div className="col-span-12 text-sm md:text-lg">
+                <div className="ml-3 sm:ml-0 mb-5">
+                  Oops! We couldn’t find anything matching "{keyword}".
+                </div>
+                <ul className="ml-3 sm:ml-0 mb-3 list-disc">
+                  Not sure where to start?
+                  <li className="ml-3 lg:ml-10">Double-checking your spelling</li>
+                  <li className="ml-3 lg:ml-10">
+                    Searching for a movie, actor or genre
+                  </li>
+                  <li className="ml-3 lg:ml-10">Browsing popular picks instead!</li>
+                </ul>
+              </div>
             )}
           </div>
         </div>
