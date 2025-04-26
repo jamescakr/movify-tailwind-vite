@@ -7,6 +7,10 @@ body {
   overflow: visible !important;
 }
 
+.react-multiple-carousel__arrow {
+  z-index: 0 !important;
+}
+
 #root {
   overflow-x: hidden;
 }
