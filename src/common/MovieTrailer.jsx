@@ -55,8 +55,7 @@ const MovieTrailer = ({ movieId, iframeClassName = "" }) => {
           transformOrigin: "center center", //"x축(가로) y축(세로)" 즉, 중앙을 기준으로 확대시킴. "left top"이라면 왼쪽 위 모서리를 기준으로 확대함
         }}
         src={trailerURL}
-        https:title="Youtube Movie Trailer" //www.youtube.com/watch?v=Vnrcj0kswUk
-        // frameBorder="0"
+        https:title="Youtube Movie Trailer"
         allowFullScreen
         allow="autoplay encrypted-media"
       />

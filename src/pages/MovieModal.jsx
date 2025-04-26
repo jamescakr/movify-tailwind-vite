@@ -1,14 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import MovieTrailer from "../common/MovieTrailer";
 import ModalPortal from "../common/ModalPortal";
 import { X } from "lucide-react";
 import { useMovieDetailQuery } from "../hooks/useMovieDetail";
 import ActionBox from "../common/ActionBox";
-
-// 1. MovieModal
-//  ++ 모달창 아래 추천영화 리스트 보여주기, recommendation api 참고
+import ReviewModal from "./ReviewModal.jsx";
 
 const MovieModal = ({ movieId, onClose }) => {
+  const [showReview, setShowReview] = useState(false);
   const { data, isLoading, isError } = useMovieDetailQuery(movieId);
   console.log("Detail DATA", data);
 
@@ -60,9 +59,9 @@ const MovieModal = ({ movieId, onClose }) => {
           {/* movie info box */}
           <div className="flex relative h-[40%] bg-[rgb(24,24,24)] text-[rgb(175,175,175)]">
             <div className="w-3/5 p-10">
-              <div className="flex mb-5">
-                <div className="mr-3">{data.release_date.slice(0, 4)}</div>
-                <div className="mr-3">
+              <div className="flex mb-5 gap-5">
+                <div>{data.release_date.slice(0, 4)}</div>
+                <div>
                   {hours}h {minutes}m
                 </div>
                 <div className="border border-[rgba(255,255,255,0.4)] rounded-md px-2 text-sm">
@@ -75,14 +74,27 @@ const MovieModal = ({ movieId, onClose }) => {
                   : data.overview}
               </div>
             </div>
-            <div className="w-2/5 p-10">
-              <div className="mb-4">
+            <div className="w-2/5 p-10 flex flex-col gap-5">
+              <div>
                 <span className="text-[#777]">Genre: </span>
                 <span>{data.genres.map((genre) => genre.name).join(", ")}</span>
               </div>
-              <span className="text-[#777]">Cast: </span>
-              <span>{actorNames}</span>
-              <div></div>
+              <div>
+                <span className="text-[#777]">Cast: </span>
+                <span>{actorNames}</span>
+              </div>
+              <button
+                className="flex justify-center items-center bg-red-600 rounded-lg text-lg w-28 h-10 p-5 text-white"
+                onClick={() => setShowReview(true)}
+              >
+                Reviews
+              </button>
+              {showReview && (
+                <ReviewModal
+                  movieId={movieId}
+                  onClose={() => setShowReview(false)}
+                />
+              )}
             </div>
           </div>
         </div>
