@@ -8,7 +8,7 @@ const ReviewModal = ({ movieId, onClose }) => {
     <ModalPortal>
       <div className="fixed inset-0 bg-black/60 flex justify-center items-center z-[60]">
         <div
-          className="relative bg-[rgb(24,24,24)] w-2/3 h-3/5 rounded-lg overflow-y-auto p-6"
+          className="relative bg-[rgb(24,24,24)] w-full sm:w-2/3 h-4/5 sm:h-3/5 rounded-lg overflow-y-auto p-6"
           onClick={(e) => e.stopPropagation()}
         >
           <button

@@ -58,7 +58,7 @@ const MovieModal = ({ movieId, onClose }) => {
 
           {/* movie info box */}
           <div className="grid grid-cols-1 sm:grid-cols-2 relative h-[40%] bg-[rgb(24,24,24)] text-[rgb(175,175,175)]">
-            <div className="sm:col-span-1 w-full p-10">
+            <div className="sm:col-span-1 w-full p-5 sm:p-10">
               <div className="flex mb-5 gap-5">
                 <div>{data.release_date.slice(0, 4)}</div>
                 <div>
@@ -75,7 +75,7 @@ const MovieModal = ({ movieId, onClose }) => {
               </div>
             </div>
 
-            <div className="sm:col-span-1 w-full p-10 gap-5">
+            <div className="sm:col-span-1 w-full p-5 sm:p-10 flex flex-col gap-5">
               <div>
                 <span className="text-[#777]">Genre: </span>
                 <span>{data.genres.map((genre) => genre.name).join(", ")}</span>
