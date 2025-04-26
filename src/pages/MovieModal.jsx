@@ -33,7 +33,7 @@ const MovieModal = ({ movieId, onClose }) => {
         }}
       >
         <div
-          className="relative bg-[rgb(24,24,24)] rounded-lg shadow-lg max-w-5xl w-3/5 h-4/5"
+          className="relative bg-[rgb(24,24,24)] rounded-lg shadow-lg max-w-5xl w-full md:w-3/5 h-4/5 overflow-y-auto"
           onClick={(e) => e.stopPropagation()}
         >
           <button
@@ -47,7 +47,7 @@ const MovieModal = ({ movieId, onClose }) => {
           </button>
           <div className="relative h-[60%]">
             <MovieTrailer movieId={movieId} iframeClassName="top-0" />
-            <div className="absolute bottom-[5%] left-[5%] text-3xl font-bold z-50 text-white">
+            <div className="absolute bottom-[5%] left-[5%] text-2xl md:text-3xl font-bold z-50 text-white">
               {data?.title}
             </div>
             <div className="absolute bottom-[20%] left-[5%] z-50 transform scale-125">
@@ -57,8 +57,8 @@ const MovieModal = ({ movieId, onClose }) => {
           </div>
 
           {/* movie info box */}
-          <div className="flex relative h-[40%] bg-[rgb(24,24,24)] text-[rgb(175,175,175)]">
-            <div className="w-3/5 p-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 relative h-[40%] bg-[rgb(24,24,24)] text-[rgb(175,175,175)]">
+            <div className="sm:col-span-1 w-full p-10">
               <div className="flex mb-5 gap-5">
                 <div>{data.release_date.slice(0, 4)}</div>
                 <div>
@@ -74,7 +74,8 @@ const MovieModal = ({ movieId, onClose }) => {
                   : data.overview}
               </div>
             </div>
-            <div className="w-2/5 p-10 flex flex-col gap-5">
+
+            <div className="sm:col-span-1 w-full p-10 gap-5">
               <div>
                 <span className="text-[#777]">Genre: </span>
                 <span>{data.genres.map((genre) => genre.name).join(", ")}</span>
