@@ -64,9 +64,9 @@ const MoviePage = () => {
 
         {/* sorted movie list */}
         <div className="col-span-12 lg:col-span-8">
-          <div className="grid grid-cols-12 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
             {noResultFound ? (
-              <div className="col-span-12 text-sm md:text-lg">
+              <div className="col-span-1 text-sm md:text-lg">
                 <div className="ml-3 sm:ml-0 mb-5">
                   Oops! We couldn’t find anything matching "{keyword}".
                 </div>
@@ -81,10 +81,7 @@ const MoviePage = () => {
               </div>
             ) : (
               (sortedMovies ?? filteredMovies).map((movie) => (
-                <div
-                  className="col-span-12 md:col-span-4 lg:col-span-3"
-                  key={movie.id}
-                >
+                <div className="col-span-1" key={movie.id}>
                   <MovieCard movie={movie} />
                 </div>
               ))

@@ -16,7 +16,7 @@ const GenreFilter = ({ selectedGenre, onGenreSelect }) => {
         {data?.map((genre) => (
           <button
             key={genre.id}
-            className={`w-auto h-8 px-4 m-2 rounded-lg bg-gradient-to-tr from-orange-400 via-red-600 to-black font-bold ${
+            className={`w-auto h-5 sm:h-8 px-2 sm:px-4 m-1 sm:m-2 text-sm sm:text-base rounded-lg bg-gradient-to-tr from-orange-400 via-red-600 to-black font-bold ${
               selectedGenre === genre.id ? "border-2 border-white" : ""
             }`}
             onClick={() => onGenreSelect(genre.id)}
